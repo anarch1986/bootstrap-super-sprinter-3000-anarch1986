@@ -8,7 +8,6 @@
     <title>Super Sprinter 3000</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +17,7 @@
             <button type="button" value="Add new User Story" onclick="location.href = 'story';">Add new User Story</button>
         </div>
     </nav>
-    <table border="1">
+    <table class=center>
         <tr>
             <th>ID</th>
             <th>Story Title</th>
@@ -27,30 +26,35 @@
             <th>Business Value</th>
             <th>Estimation</th>
             <th>Status</th>
+            <th>Action</th>
 
         </tr>
         <ul class=stories>
             {% for story in stories %}
             <tr>
-                <td>{{ story.id }}</td>
+                <td class=centered>{{ story.id }}</td>
                 <td>{{ story.title }}</td>
                 <td>{{ story.story }}</td>
                 <td>{{ story.criteria }}</td>
-                <td>{{ story.value }}</td>
-                <td>{{ story.estimation }}</td>
-                <td>{{ story.status }}</td>
-                <td>
+                <td class=centered>{{ story.value }}</td>
+                <td class=centered>{{ story.estimation }}</td>
+                <td class=centered>{{ story.status }}</td>
+                <td class=centered>
                     <form action="/story/{{ story.id }}" method=post>
                         <input type="hidden" id="id_for_update" name="id_for_update" value={{ story.id }} readonly>
-                        <button type="submit" id="pen" name="pen">
+                        <div class=button-wrapper2>
+                            <button type="submit" id="pen" name="pen" data-toggle="tooltip" title="Update User Story">
                             <img src="static/img/pen.png" style="width:20px;height:20px;" alt="">
                             </button>
+                        </div>
                     </form>
                     <form action="{{ url_for('delete_user_story') }}" method=post>
                         <input type="hidden" id="id_for_delete" name="id_for_delete" value={{ story.id }} readonly>
-                        <button type="submit" id="bin" name="bin">
+                        <div class=button-wrapper2>
+                            <button type="submit" id="bin" name="bin" data-toggle="tooltip" title="Delete User Story">
                             <img src="static/img/bin.jpg " style="width:20px;height:20px;" alt="">
                             </button>
+                        </div>
                     </form>
                 </td>
                 {% else %}
@@ -62,8 +66,15 @@
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
+                    <td>
+                        <div class=button-wrapper1>
+                            <button type="button" onclick="location.href = 'story';" data-toggle="tooltip" title="Add new User Story">
+                            <img src="static/img/pen.png" style="width:20px;height:20px;" alt="">
+                            </button>
+                        </div>
+                    </td>
                 </tr>
-                <div><strong>There are no Stories so far</strong></div> {% endfor %}
+                <div class=nodata><strong>There are no Stories so far</strong></div> {% endfor %}
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>

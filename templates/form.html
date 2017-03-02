@@ -18,54 +18,58 @@
             <button type="button" value="Add new User Story" onclick="location.href = '/list';">Go back to list view</button>
         </div>
     </nav>
-    <form action={% if story is not none %} "{{ url_for('update_user_story') }}"{% else %} "{{ url_for('add_user_story') }}" {%endif %} method=post>
-        {% if story is not none %}<input type="hidden" id="id" name="id" value={{ story.id }} readonly>{%endif %}
-        <div>
-            <label for="story title">Story Title</label>
-        </div>
-        <div>
-            <textarea id="story title" name="story title" rows=1 cols=80 maxlength="70" required="required">{% if story is not none %}{{ story.title }}{% else %}{%endif %}</textarea>
-        </div>
-        <div>
-            <label for="user story">User Story</label>
-        </div>
-        <div>
-            <textarea id="user story" name="user story" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.story }}{% else %}{%endif %}</textarea>
-        </div>
-        <div>
-            <label for="acceptance criteria">Acceptance Criteria</label>
-        </div>
-        <div>
-            <textarea id="acceptance criteria" name="acceptance criteria" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.criteria }}{% else %}{%endif %}</textarea>
-        </div>
-        <div>
-            <label for="business value">Business Value</label>
-        </div>
-        <div>
-            <input type="number" id="business value" name="business value" min=100 max=1500 value={% if story is not none %}{{ story.value }}{% else %}100{%endif %} step=100>
-        </div>
-        <div>
-            <label for="estimation">Estimation</label>
-        </div>
-        <div>
-            <input type="number" id="estimation" name="estimation" min=0.5 max=40 value={% if story is not none %}{{ story.estimation }}{% else %}0.5{%endif %} step=0.5>
-        </div>
-        <div>
-            <label for="status">Status</label>
-        </div>
-        <div>
-            <select id="status" name="status">
+    <div class="main_form">
+        <form action={% if story is not none %} "{{ url_for('update_user_story') }}"{% else %} "{{ url_for('add_user_story') }}" {%endif %} method=post>
+            {% if story is not none %}<input type="hidden" id="id" name="id" value={{ story.id }} readonly>{%endif %}
+            <div>
+                <label for="story title">Story Title</label>
+            </div>
+            <div class="input-group">
+                <textarea id="story title" name="story title" placeholder="The title of the story" data-toggle="tooltip" title="Write here the title of the story" rows=1 cols=80 maxlength="70" required="required">{% if story is not none %}{{ story.title }}{% else %}{%endif %}</textarea>
+            </div>
+            <div>
+                <label for="user story">User Story</label>
+            </div>
+            <div class="input-group">
+                <textarea id="user story" name="user story" placeholder="The description of the story" data-toggle="tooltip" title="Write here the description of the story" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.story }}{% else %}{%endif %}</textarea>
+            </div>
+            <div>
+                <label for="acceptance criteria">Acceptance Criteria</label>
+            </div>
+            <div class="input-group">
+                <textarea id="acceptance criteria" name="acceptance criteria" placeholder="The acceptance criteria of the story" data-toggle="tooltip" title="Write here when you consider the story done" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.criteria }}{% else %}{%endif %}</textarea>
+            </div>
+            <div>
+                <label for="business value">Business Value</label>
+            </div>
+            <div class="input-group">
+                <input type="number" id="business value" name="business value" data-toggle="tooltip" title="A relative value which describes that how important the story for the customer. Minimum: 100 Maximum: 1500" min=100 max=1500 value={% if story is not none %}{{
+                    story.value }}{% else %}100{%endif %} step=100>
+            </div>
+            <div>
+                <label for="estimation">Estimation</label>
+            </div>
+            <div class="input-group">
+                <input type="number" id="estimation" name="estimation" data-toggle="tooltip" title="A relative value which describes that how much work will be needed for the story. Minimum: 0.5 Maximum: 40" min=0.5 max=40 value={% if story is not none %}{{ story.estimation
+                    }}{% else %}0.5{%endif %} step=0.5>
+            </div>
+            <div>
+                <label for="status">Status</label>
+            </div>
+            <div class="input-group">
+                <select id="status" name="status" data-toggle="tooltip" title="The current status of the user story">
                 <option value="Planning" {% if story.status=="Planning" %}selected="selected"{% endif %}>Planning</option>
                 <option value="To Do" {% if story.status=="To Do" %}selected="selected"{% endif %}>To Do</option>
                 <option value="In Progress" {% if story.status=="In Progress" %}selected="selected"{% endif %}>In Progress</option>
                 <option value="Review" {% if story.status=="Review" %}selected="selected"{% endif %}>Review</option>
                 <option value="Done" {% if story.status=="Done" %}selected="selected"{% endif %}>Done</option>
             </select>
-        </div>
-        <div>
-            <input type=submit {% if story is not none %}id=Update value=Update{% else %}id=Create value=Create{% endif %}>
-        </div>
-    </form>
+            </div>
+            <div class="input-group">
+                <input type=submit {% if story is not none %}id=Update value=Update{% else %}id=Create value=Create{% endif %} data-toggle="tooltip" title="Save the story into the list">
+            </div>
+        </form>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
 </body>
