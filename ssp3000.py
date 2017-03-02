@@ -4,7 +4,7 @@ from flask import Flask, request, g, redirect, url_for, \
 
 DEBUG = True
 
-app = Flask(__name__, static_url_path="/templates", static_folder="templates")
+app = Flask(__name__)
 app.config.from_object(__name__)
 
 

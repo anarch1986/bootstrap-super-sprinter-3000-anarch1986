@@ -1,47 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Super Sprinter 3000 -{% if story is not none %} Edit Story{% else %} Add new Story{%endif %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
     <h1>User Story Manager -{% if story is not none %} Edit Story{% else %} Add new Story{%endif %}</h1>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <button type="button" value="Add new User Story" onclick="location.href = '/list';">Go back to list view</button>
+        </div>
+    </nav>
     <form action={% if story is not none %} "{{ url_for('update_user_story') }}"{% else %} "{{ url_for('add_user_story') }}" {%endif %} method=post>
         {% if story is not none %}<input type="hidden" id="id" name="id" value={{ story.id }} readonly>{%endif %}
-        <p>
+        <div>
             <label for="story title">Story Title</label>
-        </p>
-        <p>
+        </div>
+        <div>
             <textarea id="story title" name="story title" rows=1 cols=80 maxlength="70" required="required">{% if story is not none %}{{ story.title }}{% else %}{%endif %}</textarea>
-        </p>
-        <p>
+        </div>
+        <div>
             <label for="user story">User Story</label>
-        </p>
-        <p>
+        </div>
+        <div>
             <textarea id="user story" name="user story" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.story }}{% else %}{%endif %}</textarea>
-        </p>
-        <p>
+        </div>
+        <div>
             <label for="acceptance criteria">Acceptance Criteria</label>
-        </p>
-        <p>
+        </div>
+        <div>
             <textarea id="acceptance criteria" name="acceptance criteria" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.criteria }}{% else %}{%endif %}</textarea>
-        </p>
-        <p>
+        </div>
+        <div>
             <label for="business value">Business Value</label>
-        </p>
-        <p>
+        </div>
+        <div>
             <input type="number" id="business value" name="business value" min=100 max=1500 value={% if story is not none %}{{ story.value }}{% else %}100{%endif %} step=100>
-        </p>
-        <p>
+        </div>
+        <div>
             <label for="estimation">Estimation</label>
-        </p>
-        <p>
+        </div>
+        <div>
             <input type="number" id="estimation" name="estimation" min=0.5 max=40 value={% if story is not none %}{{ story.estimation }}{% else %}0.5{%endif %} step=0.5>
-        </p>
-        <p>
+        </div>
+        <div>
             <label for="status">Status</label>
-        </p>
-        <p>
+        </div>
+        <div>
             <select id="status" name="status">
                 <option value="Planning" {% if story.status=="Planning" %}selected="selected"{% endif %}>Planning</option>
                 <option value="To Do" {% if story.status=="To Do" %}selected="selected"{% endif %}>To Do</option>
@@ -49,9 +61,13 @@
                 <option value="Review" {% if story.status=="Review" %}selected="selected"{% endif %}>Review</option>
                 <option value="Done" {% if story.status=="Done" %}selected="selected"{% endif %}>Done</option>
             </select>
-        </p>
-        <p>
+        </div>
+        <div>
             <input type=submit {% if story is not none %}id=Update value=Update{% else %}id=Create value=Create{% endif %}>
-        </p>
+        </div>
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 </body>
+
+</html>

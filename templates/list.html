@@ -1,16 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Super Sprinter 3000</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
     <h1>User Story Manager</h1>
-    <p>
-        <form>
-            <input type="button" value="Add new User Story" onclick="location.href = 'story';">
-        </form>
-    </p>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <button type="button" value="Add new User Story" onclick="location.href = 'story';">Add new User Story</button>
+        </div>
+    </nav>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -36,13 +43,13 @@
                     <form action="/story/{{ story.id }}" method=post>
                         <input type="hidden" id="id_for_update" name="id_for_update" value={{ story.id }} readonly>
                         <button type="submit" id="pen" name="pen">
-                            <img src="templates/pen.png" style="width:20px;height:20px;" alt="">
+                            <img src="static/img/pen.png" style="width:20px;height:20px;" alt="">
                             </button>
                     </form>
                     <form action="{{ url_for('delete_user_story') }}" method=post>
                         <input type="hidden" id="id_for_delete" name="id_for_delete" value={{ story.id }} readonly>
                         <button type="submit" id="bin" name="bin">
-                            <img src="templates/bin.jpg " style="width:20px;height:20px;" alt="">
+                            <img src="static/img/bin.jpg " style="width:20px;height:20px;" alt="">
                             </button>
                     </form>
                 </td>
@@ -56,6 +63,10 @@
                     <td>-</td>
                     <td>-</td>
                 </tr>
-                <p><strong>There are no Stories so far</strong></p> {% endfor %}
+                <div><strong>There are no Stories so far</strong></div> {% endfor %}
     </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 </body>
+
+</html>
