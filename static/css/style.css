@@ -1,5 +1,5 @@
 body {
-    padding-top: 50px;
+    padding-top: 65px;
     background-color: #cccccc;
 }
 
@@ -7,13 +7,14 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 table.center {
     margin-left: auto;
     margin-right: auto;
-    width: 95%
+    margin-bottom: 25px;
+    width: 90%;
 }
 
 th {
@@ -38,7 +39,7 @@ th {
 }
 
 tr {
-    background-color: #efefed
+    background-color: #efefed;
 }
 
 tr:hover {
@@ -54,13 +55,14 @@ textarea {
 }
 
 .centered {
-    text-align: center
+    text-align: center;
 }
 
 .container {
     margin-top: 10px;
     position: relative;
     width: 100%;
+    margin-left: 15px
 }
 
 .main_form {
@@ -74,7 +76,7 @@ textarea {
 
 .nodata {
     padding: 25px;
-    text-align: center
+    text-align: center;
 }
 
 .button-wrapper1 {
@@ -84,10 +86,10 @@ textarea {
 
 .button-wrapper2 {
     float: right;
-    padding: 5px;
+    padding: 10px;
     text-align: center;
 }
 
 .input-group {
-    padding: 5px;
+    padding: 10px;
 }
