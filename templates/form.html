@@ -39,34 +39,36 @@
             <div class="input-group">
                 <textarea id="acceptance criteria" name="acceptance criteria" placeholder="The acceptance criteria of the story" data-toggle="tooltip" title="Write here when you consider the story done" rows=8 cols=80 maxlength="560" required="required">{% if story is not none %}{{ story.criteria }}{% else %}{%endif %}</textarea>
             </div>
-            <div>
+            <div class="float-wrapper">
                 <label for="business value">Business Value</label>
+                <div class="input-group">
+                    <input type="number" id="business value" name="business value" data-toggle="tooltip" title="A relative value which describes that how important the story for the customer. Minimum: 100 Maximum: 1500" min=100 max=1500 value={% if story is not none %}{{
+                        story.value }}{% else %}100{%endif %} step=100>
+                </div>
             </div>
-            <div class="input-group">
-                <input type="number" id="business value" name="business value" data-toggle="tooltip" title="A relative value which describes that how important the story for the customer. Minimum: 100 Maximum: 1500" min=100 max=1500 value={% if story is not none %}{{
-                    story.value }}{% else %}100{%endif %} step=100>
-            </div>
-            <div>
+            <div class="float-wrapper">
                 <label for="estimation">Estimation</label>
+                <div class="input-group">
+                    <input type="number" id="estimation" name="estimation" data-toggle="tooltip" title="A relative value which describes that how much work will be needed for the story. Minimum: 0.5 Maximum: 40" min=0.5 max=40 value={% if story is not none %}{{ story.estimation
+                        }}{% else %}0.5{%endif %} step=0.5>
+                </div>
             </div>
-            <div class="input-group">
-                <input type="number" id="estimation" name="estimation" data-toggle="tooltip" title="A relative value which describes that how much work will be needed for the story. Minimum: 0.5 Maximum: 40" min=0.5 max=40 value={% if story is not none %}{{ story.estimation
-                    }}{% else %}0.5{%endif %} step=0.5>
-            </div>
-            <div>
+            <div class="float-wrapper">
                 <label for="status">Status</label>
+                <div class="input-group">
+                    <select id="status" name="status" data-toggle="tooltip" title="The current status of the user story">
+                        <option value="Planning" {% if story.status=="Planning" %}selected="selected"{% endif %}>Planning</option>
+                        <option value="To Do" {% if story.status=="To Do" %}selected="selected"{% endif %}>To Do</option>
+                        <option value="In Progress" {% if story.status=="In Progress" %}selected="selected"{% endif %}>In Progress</option>
+                        <option value="Review" {% if story.status=="Review" %}selected="selected"{% endif %}>Review</option>
+                        <option value="Done" {% if story.status=="Done" %}selected="selected"{% endif %}>Done</option>
+                    </select>
+                </div>
             </div>
-            <div class="input-group">
-                <select id="status" name="status" data-toggle="tooltip" title="The current status of the user story">
-                <option value="Planning" {% if story.status=="Planning" %}selected="selected"{% endif %}>Planning</option>
-                <option value="To Do" {% if story.status=="To Do" %}selected="selected"{% endif %}>To Do</option>
-                <option value="In Progress" {% if story.status=="In Progress" %}selected="selected"{% endif %}>In Progress</option>
-                <option value="Review" {% if story.status=="Review" %}selected="selected"{% endif %}>Review</option>
-                <option value="Done" {% if story.status=="Done" %}selected="selected"{% endif %}>Done</option>
-            </select>
-            </div>
-            <div class="input-group">
-                <input type=submit {% if story is not none %}id=Update value=Update{% else %}id=Create value=Create{% endif %} data-toggle="tooltip" title="Save the story into the list">
+            <div class="submit-wrapper">
+                <div class="input-group">
+                    <input type=submit {% if story is not none %}id=Update value=Update{% else %}id=Create value=Create{% endif %} data-toggle="tooltip" title="Save the story into the list">
+                </div>
             </div>
         </form>
     </div>

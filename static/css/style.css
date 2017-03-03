@@ -93,3 +93,16 @@ textarea {
 .input-group {
     padding: 10px;
 }
+
+.float-wrapper {
+    padding: 10px;
+    display: inline-block;
+}
+
+.float-wrapper label {
+    display: block;
+}
+
+.submit-wrapper {
+    text-align: center;
+}
