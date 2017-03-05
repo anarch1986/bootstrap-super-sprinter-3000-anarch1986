@@ -13,7 +13,7 @@ h1 {
 table.center {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     width: 90%;
 }
 
@@ -36,6 +36,7 @@ th {
     background-color: #918E8D;
     color: white;
     text-align: center;
+    font-size: 14pt;
 }
 
 tr {
@@ -52,6 +53,10 @@ textarea {
     box-sizing: border-box;
     width: 100%;
     padding: 5px;
+}
+
+label {
+    font-size: 14pt;
 }
 
 .centered {
@@ -75,18 +80,25 @@ textarea {
 }
 
 .nodata {
+    font-size: 14pt;
     padding: 25px;
     text-align: center;
 }
 
 .button-wrapper1 {
-    padding: 5px;
+    padding: 10px;
     text-align: center;
 }
 
 .button-wrapper2 {
     float: right;
     padding: 10px;
+    text-align: center;
+}
+
+.button-wrapper3 {
+    padding: 10px;
+    padding-bottom: 20px;
     text-align: center;
 }
 
@@ -105,4 +117,30 @@ textarea {
 
 .submit-wrapper {
     text-align: center;
+}
+
+.modal-header {
+    background-color: #918E8D;
+    color: white;
+}
+
+.modal-title {
+    font-size: 16pt;
+}
+
+.modal-content {
+    font-size: 14pt;
+    text-align: center;
+}
+
+.modal-footer {
+    font-size: 14pt;
+    text-align: center;
+    display: inline-block;
+}
+
+.divider {
+    width: 120px;
+    height: auto;
+    display: inline-block;
 }
